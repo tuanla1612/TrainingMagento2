@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="magenest_director" resource="default" engine="innodb" comment="Magenest Director Table">
+        <column xsi:type="int" name="director_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Director ID"/>
+        <column xsi:type="text" name="name" nullable="false" comment="Director Name"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="director_id"/>
+        </constraint>
+        <index referenceId="MAGENEST_DIRECTOR_ENTITY_DIRECTOR_ID" indexType="btree">
+            <column name="director_id"/>
+        </index>
+    </table>
+
+    <table name="magenest_actor" resource="default" engine="innodb" comment="Magenest Actor Table">
+        <column xsi:type="int" name="actor_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Actor ID"/>
+        <column xsi:type="text" name="name" nullable="false" comment="Actor Name"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="actor_id"/>
+        </constraint>
+        <index referenceId="MAGENEST_ACTOR_ENTITY_ACTOR_ID" indexType="btree">
+            <column name="actor_id"/>
+        </index>
+    </table>
+
+    <table name="magenest_movie" resource="default" engine="innodb" comment="Magenest Movie Table">
+        <column xsi:type="int" name="movie_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Movie ID"/>
+        <column xsi:type="text" name="name" nullable="false" comment="Movie Name"/>
+        <column xsi:type="text" name="description" nullable="false" comment="Movie Description"/>
+        <column xsi:type="int" name="rating" nullable="false" unsigned="true" default="0" padding="2" comment="Movie Rating"/>
+        <column xsi:type="int" name="director_id" padding="10" unsigned="true" nullable="false"
+                comment="Movie Director ID"/>
+        
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="movie_id"/>
+        </constraint>
+
+        <constraint xsi:type="foreign" referenceId="FOREIGN_KEY_MOVIE_DIRECTOR"
+                    table="magenest_movie" column="director_id" referenceTable="magenest_director"
+                    referenceColumn="director_id" onDelete="CASCADE"/>
+
+        <index referenceId="MAGENEST_MOVIE_ENTITY_MOVIE_ID" indexType="btree">
+            <column name="movie_id"/>
+        </index>
+    </table>
+
+    <table name="magenest_movie_actor" resource="default" engine="innodb" comment="Magenest Movie Actor Table">
+        <column xsi:type="int" name="movie_actor_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Movie_Actor ID"/>
+        <column xsi:type="int" name="movie_id" padding="10" unsigned="true" nullable="false"
+                comment="Movie_Actor Movie ID"/>
+        <column xsi:type="int" name="actor_id" padding="10" unsigned="true" nullable="false"
+                comment="Movie_Actor Actor ID"/>
+        
+        
+        <constraint xsi:type="foreign" referenceId="FOREIGN_KEY_MOVIE_ACTOR_MOVIE"
+                    table="magenest_movie_actor" column="movie_id" referenceTable="magenest_movie"
+                    referenceColumn="movie_id" onDelete="CASCADE"/>
+
+        <constraint xsi:type="foreign" referenceId="FOREIGN_KEY_MOVIE_ACTOR_ACTOR"
+                    table="magenest_movie_actor" column="actor_id" referenceTable="magenest_actor"
+                    referenceColumn="actor_id" onDelete="CASCADE"/>
+
+        <index referenceId="MAGENEST_MOVIE_ACTOR_ENTITY_MOVIE_ACTOR_ID" indexType="btree">
+            <column name="movie_actor_id"/>
+        </index>
+    </table>
+</schema>

@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:helloworld:Magento_Widget:etc/widget.xsd">
+	<widget class="Magenest\Movie\Block\Widget\Movies" id="magenest_movie_movies">
+		<label>Magenest Movie</label>
+		<description>Movies</description>
+		<parameters>
+			<parameter name="movies" sort_order="10" visible="true" xsi:type="text">
+				<label>Custom Movies Label</label>
+			</parameter>
+		</parameters>
+	</widget>
+
+	<widget class="Magenest\Movie\Block\Widget\Banner" id="magenest_movie_banner">
+		<label>Magenest Movie Banner</label>
+		<description>Banner</description>
+	</widget>
+</widgets>

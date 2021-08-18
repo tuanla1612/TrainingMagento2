@@ -1,0 +1,39 @@
+<div class="col-m-6">
+    <h2>Module</h2>
+    <table class="admin__table-secondary">
+        <tr>
+            <th><?php echo __('Number of module installed in Magento') ?></th>
+            <td><?php echo $block->getMagentoModulesList() ?></td>
+        </tr>
+        <tr>
+            <th><?php echo __('Number of module installed in Magento in other Vendor') ?></th>
+            <td><?php echo $block->getVendorModulesList() ?></td>
+        </tr>
+    </table>
+</div>
+
+<div class="col-m-6">
+    <h2>Details</h2>
+    <table class="admin__table-secondary">
+        <tr>
+            <th><?php echo __('Number of customers') ?></th>
+            <td><?php echo $block->getCustomerNumber() ?></td>
+        </tr>
+        <tr>
+            <th><?php echo __('Number of products') ?></th>
+            <td><?php echo $block->getProductsNumber() ?></td>
+        </tr>
+        <tr>
+            <th><?php echo __('Number of orders') ?></th>
+            <td><?php echo $block->getOrderNumber() ?></td>
+        </tr>
+        <tr>
+            <th><?php echo __('Number of invoices') ?></th>
+            <td><?php echo $block->getInvoiceNumber() ?></td>
+        </tr>
+        <tr>
+            <th><?php echo __('Number of creditmemos') ?></th>
+            <td><?php echo $block->getCreditmemosNumber() ?></td>
+        </tr>
+    </table>
+</div>

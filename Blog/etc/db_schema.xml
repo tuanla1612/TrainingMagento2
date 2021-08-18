@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="magenest_category" resource="default" engine="innodb" comment="Magenest Category Table">
+        <column xsi:type="int" name="category_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Category ID"/>
+        <column xsi:type="text" name="name" nullable="false" comment="Category Name"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="category_id"/>
+        </constraint>
+        <index referenceId="MAGENEST_CATEGORY_ENTITY_CATEGORY_ID" indexType="btree">
+            <column name="category_id"/>
+        </index>
+    </table>
+
+    <table name="magenest_blog" resource="default" engine="innodb" comment="Magenest Blog Table">
+        <column xsi:type="int" name="blog_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Blog ID"/>
+        <column xsi:type="varchar" name="title" nullable="false" comment="Blog Title"/>
+        <column xsi:type="text" name="description" nullable="false" comment="Blog Description"/>
+        <column xsi:type="varchar" name="content" nullable="false" comment="Blog Content"/>
+        <column xsi:type="text" name="url_rewrite" nullable="true" comment="Blog Url Rewrite"/>
+        <column xsi:type="text" name="status" nullable="false" comment="Blog Status"/>
+        <column xsi:type="datetime" name="create_at" on_update="false" nullable="true" comment="Blog Create At"/>
+        <column xsi:type="datetime" name="update_at" on_update="false" nullable="true" comment="Blog Update At"/>
+        <column xsi:type="int" name="author_id" padding="10" unsigned="true" nullable="false"
+                comment="Blog Author ID"/>
+        
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="blog_id"/>
+        </constraint>
+
+        <constraint xsi:type="foreign" referenceId="FOREIGN_KEY_BLOG_AUTHOR"
+                    table="magenest_blog" column="author_id" referenceTable="admin_user"
+                    referenceColumn="user_id" onDelete="CASCADE"/>
+
+        <index referenceId="MAGENEST_BLOG_ENTITY_TITLE" indexType="btree">
+            <column name="title"/>
+        </index>
+
+        <index referenceId="MAGENEST_BLOG_ENTITY_CONTENT" indexType="btree">
+            <column name="content"/>
+        </index>
+    </table>
+
+    <table name="magenest_blog_category" resource="default" engine="innodb" comment="Magenest Blog Category Table">
+        <column xsi:type="int" name="blog_id" padding="10" unsigned="true" nullable="false"
+                comment="Blog Category Blog ID"/>
+        <column xsi:type="int" name="category_id" padding="10" unsigned="true" nullable="false"
+                comment="Blog Category Category ID"/>
+        
+        <constraint xsi:type="foreign" referenceId="FOREIGN_KEY_BLOG_BLOG_CATEGORY"
+                    table="magenest_blog_category" column="blog_id" referenceTable="magenest_blog"
+                    referenceColumn="blog_id" onDelete="CASCADE"/>
+
+        <constraint xsi:type="foreign" referenceId="FOREIGN_KEY_CATEGORY_BLOG_CATEGORY"
+                    table="magenest_blog_category" column="category_id" referenceTable="magenest_category"
+                    referenceColumn="category_id" onDelete="CASCADE"/>
+    </table>
+
+    <table name="magenest_banner" resource="default" engine="innodb" comment="Magenest Banner Table">
+        <column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true" comment="Banner ID"/>
+        <column xsi:type="boolean" name="enabled"  nullable="false" comment="Status" default="true" />
+        <column xsi:type="varchar" name="name" length="64"  nullable="true" comment="Banner Name"/>
+        <column xsi:type="varchar" name="title" length="64"  nullable="true" comment="Banner Title" />
+        <column xsi:type="varchar" name="link"  length="64"  nullable="true" comment="Banner Link" />
+        <column xsi:type="varchar" name="add_text" length="1000" nullable="true" comment="Text" />
+        <column xsi:type="varchar" name="images" length="1000"  nullable="true" comment="images" />
+        <column xsi:type="timestamp" name="created_at"  on_update="false" nullable="true" default="CURRENT_TIMESTAMP"
+                comment="Created at"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="true" default="CURRENT_TIMESTAMP"
+                comment="Update at"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <index referenceId="MAGENEST_BANNER_NAME" indexType="btree">
+            <column name="name"/>
+        </index>
+        <index referenceId="MAGENEST_BANNER_TITLE" indexType="btree">
+            <column name="title"/>
+        </index>
+    </table>
+
+</schema>

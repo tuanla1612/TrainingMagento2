@@ -1,0 +1,25 @@
+<h2>Movie List</h2>
+
+<table style="border:1px solid black;text-align:center">
+    <tr>
+        <th colspan="3" style="border:1px solid black;text-align:center">Movies</th>
+        <th rowspan="2" style="border:1px solid black;text-align:center;vertical-align:middle">Director</th>
+        <th rowspan="2" style="border:1px solid black;text-align:center;vertical-align:middle">Actors</th>
+    </tr>
+
+    <tr>
+        <td style="border:1px solid black;">Name</td>
+        <td style="border:1px solid black;">Description</td>
+        <td style="border:1px solid black;">Rating</td>
+    </tr>
+<?php foreach ($block->getMovies() as $movie): ?>
+    <tr>
+        <td style="border:1px solid black;"><?php echo $movie->getMovie() ?></td>
+        <td style="border:1px solid black;"><?php echo $movie->getDescription() ?></td>
+        <td style="border:1px solid black;"><?php echo $movie->getRating() ?></td>
+        <td style="border:1px solid black;"><?php echo $movie->getDirector() ?></td>
+        <td style="border:1px solid black;"><?php echo $movie->getActor() ?></td>
+    </tr>
+<?php endforeach; ?>
+
+</table>

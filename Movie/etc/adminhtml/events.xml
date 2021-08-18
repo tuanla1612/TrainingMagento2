@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.x
+sd">
+    <event name="catalog_product_save_before">
+        <observer name="save_custom_data" instance="Magenest\Movie\Observer\BeforeProductSave"/>
+    </event>
+
+    <!-- <event name="catalog_product_save_after">
+        <observer name="save_category_data" instance="Magenest\Movie\Observer\AfterProductSave"/>
+    </event> -->
+
+    <event name="customer_save_before">
+        <observer name="admin_prepare_custom_customer_attribute" instance="Magenest\Movie\Observer\AdminPrepareSaveCustomer" />
+    </event>
+</config>

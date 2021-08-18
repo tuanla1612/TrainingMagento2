@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/sy
+stem_file.xsd">
+
+<system>
+    <tab id="magenest" translate="label" sortOrder="500">
+        <label>Magenest</label>
+    </tab>
+
+    <section id="movie" translate="label" type="text" sortOrder="100"
+    showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>Movie</label>
+        <tab>magenest</tab>
+        <resource>Magenest_Movie::config_movie</resource>
+        <group id="moviepage" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Magenest Movie Page Settings</label>
+
+            <field id="text_field" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Text Field</label>
+            </field>
+
+            <field id="is_enabled" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Yes/No_Field_abcd</label>
+                <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            </field>
+
+            <field id="custom_select_field" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Custom Select Field</label>
+                <source_model>Magenest\Movie\Model\Config\Source\Relation</source_model>
+            </field>
+
+            <field id="rows_magenest_movie" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Rows in "magenest_movie" table</label>
+                <frontend_model>Magenest\Movie\Block\Adminhtml\FrontendModel\MagenestMovie</frontend_model>
+            </field>
+
+            <field id="rows_magenest_actor" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Rows in "magenest_actor" table</label>
+                <depends>
+                    <field id="custom_select_field">1</field>
+                </depends>
+                <frontend_model>Magenest\Movie\Block\Adminhtml\FrontendModel\MagenestActor</frontend_model>
+            </field>
+
+            <field id="refresh_button" translate="label" type="button" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Button</label>
+                <frontend_model>Magenest\Movie\Block\Adminhtml\FrontendModel\RefreshButton</frontend_model>
+            </field>
+        </group>
+    </section>
+
+    <section id="customer_config" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Customer Config</label>
+            <tab>magenest</tab>
+            <resource>Magenest_Movie::customer_config</resource>
+            <group id="online_course" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Online Course</label>
+                <comment>Select online course for each customer group</comment>
+
+                <field id="select" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Customer Group</label>
+                    <source_model>Magenest\Movie\Model\Source\CustomerGroup</source_model>
+                </field>
+
+                <field id="start_course_notloggedin" translate="label" sortOrder="2" type="date" showInDefault="1" showInStore="1" >
+                    <label>Start Course</label>
+                    <frontend_model>Magenest\Movie\Block\Adminhtml\FrontendModel\Date</frontend_model>
+                    <depends>
+                        <field id="select">0</field>
+                    </depends>
+                </field>
+
+                <field id="end_course_notloggedin" translate="label" sortOrder="2" type="date" showInDefault="1" showInStore="1" >
+                    <label>End Course</label>
+                    <frontend_model>Magenest\Movie\Block\Adminhtml\FrontendModel\Date</frontend_model>
+                    <depends>
+                        <field id="select">0</field>
+                    </depends>
+                </field>
+
+                <field id="start_course_general" translate="label" sortOrder="2" type="date" showInDefault="1" showInStore="1" >
+                    <label>Start Course</label>
+                    <frontend_model>Magenest\Movie\Block\Adminhtml\FrontendModel\Date</frontend_model>
+                    <depends>
+                        <field id="select">1</field>
+                    </depends>
+                </field>
+
+                <field id="end_course_general" translate="label" sortOrder="2" type="date" showInDefault="1" showInStore="1" >
+                    <label>End Course</label>
+                    <frontend_model>Magenest\Movie\Block\Adminhtml\FrontendModel\Date</frontend_model>
+                    <depends>
+                        <field id="select">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+</system>
+</config>

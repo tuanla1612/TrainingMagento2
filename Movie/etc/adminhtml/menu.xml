@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/m
+enu.xsd">
+<menu>
+    <add id="Magenest_Movie::magenest"
+    title="Magenest"
+    module="Magenest_Movie"
+    sortOrder="50"
+    resource="Magenest_Movie::movie"
+    />
+
+    <add
+    id="Magenest_Movie::index"
+    title="Magenest Index"
+    module="Magenest_Movie"
+    sortOrder="55"
+    parent="Magenest_Movie::magenest"
+    action="movie/index/"
+    resource="Magenest_Movie::index"
+    />
+
+    <add
+    id="Magenest_Movie::component"
+    title="Components"
+    module="Magenest_Movie"
+    sortOrder="80" 
+    parent="Magenest_Movie::magenest"
+    action="movie/component/"
+    resource="Magenest_Movie::movie"
+    />
+
+    <add
+    id="Magenest_Movie::magenestmovie"
+    title="Magenest Movie"
+    module="Magenest_Movie"
+    sortOrder="95" 
+    parent="Magenest_Movie::magenest"
+    action="movie/magenestmovie/"
+    resource="Magenest_Movie::magenestmovie"
+    />
+
+    <add
+    id="Magenest_Movie::magenestactor"
+    title="Magenest Actor"
+    module="Magenest_Movie"
+    sortOrder="100" 
+    parent="Magenest_Movie::magenest"
+    action="movie/magenestactor/"
+    resource="Magenest_Movie::magenestactor"
+    />
+
+    <add
+    id="Magenest_Movie::magenestdirector"
+    title="Magenest Director"
+    module="Magenest_Movie"
+    sortOrder="105" 
+    parent="Magenest_Movie::magenest"
+    action="movie/magenestdirector/"
+    resource="Magenest_Movie::magenestdirector"
+    />
+</menu>
+</config>

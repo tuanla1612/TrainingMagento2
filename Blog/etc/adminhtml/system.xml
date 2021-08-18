@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/sy
+stem_file.xsd">
+
+<system>
+    <section id="color_picker_section" type="text" sortOrder="100" showInDefault="1" showInWebsite="0" showInStore="0">
+        <class>separator-top</class>
+        <tab>magenest</tab>
+        <label>Color Picker</label>
+        <resource>Magenest_Blog::colors</resource>
+        <group id="color_picker" translate="label" type="text" sortOrder="250" showInDefault="1">
+            <field id="background_color" translate="label" type="text" sortOrder="1" showInDefault="1" showInStore="1" showInWebsite="1">
+                <label>Choose Color</label>
+                <frontend_model>Magenest\Blog\Block\Adminhtml\Config\ColorPicker</frontend_model>
+                <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+            </field>
+        </group>
+    </section>
+</system>
+</config>

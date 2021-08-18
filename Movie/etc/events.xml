@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.x
+sd">
+    <event name="movie_register_visit">
+        <observer name="register_movie_visit" instance="Magenest\Movie\Observer\RegisterVisitObserver" />
+    </event>
+
+    <event name="customer_register_success">
+        <observer name="customer_register_succes" instance="Magenest\Movie\Observer\CustomerRegisterSuccessObserver" />
+    </event>
+
+    <event name="save_movie">
+        <observer name="save_movie" instance="Magenest\Movie\Observer\SaveMovieObserver" />
+    </event>
+
+    <event name="admin_system_config_changed_section_movie">
+        <observer name="custom_admin_system_config_changed_section_magenest" instance="Magenest\Movie\Observer\MagenestConfigObserver"/>
+    </event>
+    
+</config>

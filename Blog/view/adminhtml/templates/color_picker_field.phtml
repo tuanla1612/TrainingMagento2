@@ -1,0 +1,43 @@
+<input class="color-input" type="color" name="groups[color_picker][fields][background_color][value][_1628240647519_519][color_code]" value="">
+
+<script>
+    window.customConfig = <?php echo \Zend_Json::encode($block->getColor()) ?>;
+
+    console.log(window.customConfig);
+    const propertyNames = Object.value(window.customConfig);
+    console.log(propertyNames['0']);
+</script>
+
+<!-- <script type="text/javascript">
+            require(["jquery"], function ($) {
+                $(document).ready(function (e) {
+                    $("#'.$element->getHtmlId().'").css("background-color","#'.$value.'");
+                    $("#'.$element->getHtmlId().'").colpick({
+                        layout:"hex",
+                        submit:0,
+                        colorScheme:"dark",
+                        color: "#'.$value.'",
+                        onChange:function(hsb,hex,rgb,el,bySetColor) {
+                        $(el).css("background-color","#"+hex);
+                        if(!bySetColor) $(el).val(hex);
+                    }
+                    }).keyup(function(){
+                        $(this).colpickSetColor(this.value);
+                    });
+                });
+            });
+            </script> -->
+
+<!-- <script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "color-input": {
+                        "component": "Magenest_Blog/js/background_color_picker"
+                    }
+                 }
+            }
+        }
+    }
+</script> -->

@@ -1,0 +1,27 @@
+<style>
+    .page-header .header.pannel{
+        display: flex;
+    }
+</style>
+
+<script>
+    window.customConfig = <?php echo \Zend_Json::encode($block->getColorOption()) ?>
+</script>
+
+<div id="custom-component" data-bind="scope:'customcomponent'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+    {
+        "#custom-component": {
+            "Magento_Ui/js/core/app": {
+               "components": {
+                    "customcomponent": {
+                        "component": "Magenest_Blog/js/color_select"
+                    }
+                }
+            }
+        }
+    }
+    </script>
+</div>
+

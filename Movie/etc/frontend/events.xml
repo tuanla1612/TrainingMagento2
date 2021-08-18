@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.x
+sd">
+    <event name="checkout_onepage_controller_success_action">
+        <observer name="invoices" instance="Magenest\Movie\Observer\Invoices" />
+    </event>
+
+    <event name="customer_save_before">
+        <observer name="prepare_custom_customer_attribute" instance="Magenest\Movie\Observer\PrepareSaveCustomer" />
+    </event>
+
+    <event name="customer_address_save_before">
+        <observer name="prepare_custom_address_customer_attribute" instance="Magenest\Movie\Observer\PrepareSaveCustomer" />
+    </event>
+</config>
